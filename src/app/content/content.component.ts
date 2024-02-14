@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NgForOf, NgIf} from "@angular/common";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-content',

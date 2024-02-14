@@ -45,7 +45,7 @@ SwiperCore.use([
                   <ng-template swiperSlide>
                       <div class="p-4 my-5 rounded-md shadow-3xl mx-8 flex flex-col">
                           <div class="flex">
-                              <img class="mr-2.5 w-12 h-12 rounded-full" [src]="review.avatarUrl">
+                              <img class="mr-2.5 w-12 h-12 rounded-full" [src]="review.avatarUrl" alt="Swiper slide image">
                               <div class="flex flex-col justify-around">
                                   <h3>{{review.name}}</h3>
                                   <h3>{{review.date.getFullYear()}}</h3>

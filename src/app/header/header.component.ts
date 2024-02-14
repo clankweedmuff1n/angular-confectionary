@@ -4,7 +4,6 @@ import {NzDropDownDirective, NzDropdownMenuComponent} from "ng-zorro-antd/dropdo
 import {NzMenuDirective, NzMenuDividerDirective, NzMenuItemComponent, NzSubMenuComponent} from "ng-zorro-antd/menu";
 import {NgForOf, NgIf} from "@angular/common";
 import {RouterLink} from "@angular/router";
-import {split} from "@angular-devkit/core";
 
 @Component({
   selector: 'app-header',
