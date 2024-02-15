@@ -20,6 +20,7 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent
   ],
   template: `
+      <!--<app-header class="sticky top-0"/>-->
       <app-header/>
       <app-content/>
       <app-categories/>
@@ -27,7 +28,6 @@ import {FooterComponent} from "../footer/footer.component";
       <app-reviews/>
       <app-information/>
       <app-footer/>
-      <div class="h-[100vh]"></div>
   `
 })
 export class MainPageComponent {

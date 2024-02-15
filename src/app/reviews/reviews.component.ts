@@ -36,7 +36,7 @@ SwiperCore.use([
     NgForOf
   ],
   template: `
-    <section class="w-full max-w-[1500px] m-auto">
+    <section class="w-full max-w-[1680px] m-auto">
       <div class="md:px-10">
         <swiper [loop]="true" [autoHeight]="true" [allowTouchMove]="false"
                 [breakpoints]="breakpoints"
@@ -48,13 +48,13 @@ SwiperCore.use([
                 <div class="flex">
                   <img class="mr-2.5 w-12 h-12 rounded-full" [src]="review.avatarUrl" alt="Swiper slide image">
                   <div class="flex flex-col justify-around">
-                    <h3>{{ review.name }}</h3>
-                    <h3>{{ review.date.getFullYear() }}</h3>
+                    <h3 class="md:text-xl">{{ review.name }}</h3>
+                    <h3 class="md:text-xl">{{ review.date.getFullYear() }}</h3>
                   </div>
                 </div>
                 <div class="py-2.5">{{ review.review }}</div>
-                <div class="h-[100px] overflow-x-hidden overflow-y-scroll">
-                  <p>{{ review.text }}</p>
+                <div class="h-[100px] md:h-[150px] overflow-x-hidden overflow-y-scroll">
+                  <p class="md:text-base">{{ review.text }}</p>
                 </div>
               </div>
             </ng-template>

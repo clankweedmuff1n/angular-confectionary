@@ -1,9 +1,11 @@
-import {Component} from '@angular/core';
+import {Component, HostListener, ElementRef} from '@angular/core';
 import {NzButtonComponent} from "ng-zorro-antd/button";
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
 import {NzDropDownDirective, NzDropdownMenuComponent} from "ng-zorro-antd/dropdown";
 import {NzMenuDirective, NzMenuDividerDirective, NzMenuItemComponent, NzSubMenuComponent} from "ng-zorro-antd/menu";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {RouterLink} from "@angular/router";
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'app-header',
@@ -18,24 +20,43 @@ import {RouterLink} from "@angular/router";
     NzSubMenuComponent,
     NgForOf,
     NgIf,
-    RouterLink
+    RouterLink,
+    NgClass,
+    NgStyle
   ],
   template:
     `
-        <header class="w-full my-5">
+        <div *ngIf="isHeaderFixed"
+             [ngClass]="isHeaderFixed ? 'block sticky top-0' : 'hidden'"
+             [ngStyle]="{'height': headerHeight}">
+        </div>
+        <header class="transition-all duration-500 w-full sticky top-0 z-50  bg-white py-10"
+                [ngClass]="isHeaderFixed ? '!fixed shadow-2xl' : ''"
+                (scroll)="onScroll()">
+
+        <!--<header class="w-full z-50 bg-white py-10">-->
             <div class="w-4/5 m-auto flex flex-col">
-                <div class="m-auto w-[60px] h-[60px]">
+                <div
+                        class="transition-all w-[100px] h-[100px] m-auto static">
                     <img [src]="logoSrc" alt="Logo">
                 </div>
-                <div class="w-full mt-5">
-                    <button nz-dropdown nzPlacement="bottomCenter" nzTrigger="click" [nzDropdownMenu]="dropdownMenu"
-                            class="bg-menu-beige rounded-md flex justify-between w-full items-center py-1.5 px-2.5">
+                <div class="md:max-w-[1080px] w-full flex md:m-auto mt-5 justify-around">
+
+                    <button nz-dropdown nzTrigger="click" [nzDropdownMenu]="dropdownMenu"
+                            class="md:hidden bg-menu-beige rounded-md flex justify-between w-full items-center py-1.5 px-2.5">
                         <p class="text-menu-brown font-bold">Seleccionar página</p>
                         <svg class="text-menu-green" xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
                              viewBox="0 0 24 24">
                             <path fill="currentColor" d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"/>
                         </svg>
                     </button>
+
+                    <ng-container *ngFor="let button of buttons">
+                        <button class="max-md:hidden py-1.5 px-2.5">
+                            <p class="text-menu-brown font-bold">{{button.name}}</p>
+                        </button>
+                    </ng-container>
+
                     <nz-dropdown-menu #dropdownMenu="nzDropdownMenu">
                         <ul class="uppercase p-3.5 border-t-4 border-menu-green rounded-none mt-5" nz-menu>
                             <ng-container *ngFor="let button of buttons">
@@ -69,11 +90,35 @@ import {RouterLink} from "@angular/router";
     `
 })
 export class HeaderComponent {
+  isHeaderFixed: boolean = false;
+  headerHeight: string = "";
+
+  @HostListener('window:scroll', ['$event']) onScroll() {
+    this.isHeaderFixed = window.scrollY > 0;
+  }
+
+  constructor(private elementRef: ElementRef, private breakpointObserver: BreakpointObserver) {
+  }
+
+  isPhoneScreen() {
+    return this.breakpointObserver.observe([Breakpoints.Handset])
+      .pipe(map(result => result.matches));
+  }
+
+  ngAfterViewInit() {
+    this.headerHeight = this.elementRef.nativeElement.offsetHeight + "px";
+  }
+
   readonly logoSrc = "https://lacannelledemartini.com/wp-content/uploads/2022/02/icono-la-cannelle.png";
   readonly buttons = [
     {
       name: "First button",
       path: "test",
+      subButtons: null,
+    },
+    {
+      name: "Second button",
+      path: "Second button path",
       subButtons: null,
     },
     {

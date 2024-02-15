@@ -5,6 +5,10 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'max-md': {'max': '767px'},
+        // => @media (max-width: 639px) { ... }
+      },
       boxShadow: {
         '3xl': '6px 6px 18px 0px rgba(0,0,0,0.3)',
       },
