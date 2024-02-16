@@ -28,7 +28,7 @@ import {RouterLink} from "@angular/router";
                     <img [src]="logoSrc" alt="Logo">
                 </div>
                 <div class="w-full mt-5">
-                    <button nz-dropdown nzTrigger="click" [nzDropdownMenu]="dropdownMenu"
+                    <button nz-dropdown nzPlacement="bottomCenter" nzTrigger="click" [nzDropdownMenu]="dropdownMenu"
                             class="bg-menu-beige rounded-md flex justify-between w-full items-center py-1.5 px-2.5">
                         <p class="text-menu-brown font-bold">Seleccionar página</p>
                         <svg class="text-menu-green" xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"

@@ -4,6 +4,8 @@ import {ContentComponent} from "../content/content.component";
 import {CategoriesComponent} from "../categories/categories.component";
 import {ShowcaseComponent} from "../showcase/showcase.component";
 import {ReviewsComponent} from "../reviews/reviews.component";
+import {InformationComponent} from "../information/information.component";
+import {FooterComponent} from "../footer/footer.component";
 
 @Component({
   selector: 'app-main-page',
@@ -13,7 +15,9 @@ import {ReviewsComponent} from "../reviews/reviews.component";
     ContentComponent,
     CategoriesComponent,
     ShowcaseComponent,
-    ReviewsComponent
+    ReviewsComponent,
+    InformationComponent,
+    FooterComponent
   ],
   template: `
       <app-header/>
@@ -21,6 +25,8 @@ import {ReviewsComponent} from "../reviews/reviews.component";
       <app-categories/>
       <app-showcase/>
       <app-reviews/>
+      <app-information/>
+      <app-footer/>
       <div class="h-[100vh]"></div>
   `
 })

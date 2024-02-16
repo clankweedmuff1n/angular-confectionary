@@ -14,6 +14,7 @@ module.exports = {
         "menu-brown": "rgba(var(--menu-brown), 1)",
         "menu-brown-light": "rgba(var(--menu-brown), .7)",
         "menu-beige-light": "rgba(var(--menu-beige-light), 1)",
+        "menu-beige-dark": "rgba(var(--menu-beige-dark), 1)",
       },
     },
   },
