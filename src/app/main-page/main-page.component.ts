@@ -20,14 +20,13 @@ import {FooterComponent} from "../footer/footer.component";
     FooterComponent
   ],
   template: `
-      <app-header/>
-      <app-content/>
-      <app-categories/>
-      <app-showcase/>
-      <app-reviews/>
-      <app-information/>
-      <app-footer/>
-      <div class="h-[100vh]"></div>
+    <app-header/>
+    <app-content/>
+    <app-categories/>
+    <app-showcase/>
+    <app-reviews/>
+    <app-information/>
+    <app-footer/>
   `
 })
 export class MainPageComponent {

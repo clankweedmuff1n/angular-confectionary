@@ -1,44 +1,37 @@
 import {Component} from '@angular/core';
-import {SwiperModule} from "swiper/angular";
-import 'swiper/swiper.min.css'
-import 'swiper/swiper-bundle.min.css'
-
-import SwiperCore, {
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Virtual,
-  Zoom,
-  Autoplay,
-  Thumbs,
-  Controller,
-} from 'swiper';
 import {NgForOf} from "@angular/common";
-
-SwiperCore.use([
-  Navigation,
-  Pagination,
-  Scrollbar,
-  A11y,
-  Virtual,
-  Zoom,
-  Autoplay,
-  Thumbs,
-  Controller
-]);
+import {NgxSplideModule} from "ngx-splide";
 
 @Component({
   selector: 'app-reviews',
   standalone: true,
   imports: [
-    SwiperModule,
-    NgForOf
+    NgForOf,
+    NgxSplideModule
   ],
   template: `
     <section class="w-full max-w-[1500px] m-auto">
       <div class="md:px-10">
-        <swiper [loop]="true" [autoHeight]="true" [allowTouchMove]="false"
+        <splide [options]="{ breakpoints: {
+            '768': {perPage: 1}
+        }, type: 'loop', perPage: 4, keyboard: false }">
+          <splide-slide *ngFor="let review of reviewArray">
+            <div class="p-4 my-10 rounded-md shadow-3xl mx-8 md:mx-4 flex flex-col">
+              <div class="flex">
+                <img class="mr-2.5 w-12 h-12 rounded-full" [src]="review.avatarUrl" alt="Swiper slide image">
+                <div class="flex flex-col justify-around">
+                  <h3>{{ review.name }}</h3>
+                  <h3>{{ review.date.getFullYear() }}</h3>
+                </div>
+              </div>
+              <div class="py-2.5">{{ review.review }}</div>
+              <div class="h-[100px] overflow-x-hidden overflow-y-scroll">
+                <p>{{ review.text }}</p>
+              </div>
+            </div>
+          </splide-slide>
+        </splide>
+        <!--<swiper [loop]="true" [autoHeight]="true" [allowTouchMove]="false"
                 [breakpoints]="breakpoints"
                 [autoplay]="{ delay: 100000, disableOnInteraction: false }" [pagination]="{ clickable: true }"
                 [navigation]="true">
@@ -59,7 +52,7 @@ SwiperCore.use([
               </div>
             </ng-template>
           </ng-container>
-        </swiper>
+        </swiper>-->
       </div>
     </section>
   `
