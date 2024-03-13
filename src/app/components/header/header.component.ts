@@ -25,23 +25,25 @@ import {RouterLink} from "@angular/router";
       <div
         [style]="{'height': headerHeight +'px'}"
         [class]="isHeaderFixed ? 'block' : 'hidden'"></div>
-      <header class="z-10 w-full py-5 transition-all duration-1000 top-0 bg-white"
+      <header class="z-50 w-full py-5 transition-all duration-1000 top-0 bg-white"
               [class]="isHeaderFixed ? 'fixed shadow-2xl' : 'sticky'">
         <div class="w-4/5 m-auto flex flex-col">
-          <div class="m-auto w-[60px] h-[60px]">
-            <img [src]="logoSrc" alt="Logo">
+          <div class="flex m-auto">
+            <!--<img class="w-[60px] h-[60px]" [src]="logoSrc" alt="Logo">-->
+            <h3 class="text-menu-brown mb-2 font-bold">꧁༺Filatova cakes༻꧂</h3>
+            <!--<img class="w-[60px] h-[60px]" [src]="logoSrc" alt="Logo">-->
           </div>
           <div class="w-full mt-5">
             <button nz-dropdown nzPlacement="bottomCenter" nzTrigger="click" [nzDropdownMenu]="dropdownMenu"
                     class="bg-menu-beige rounded-md flex justify-between w-full items-center py-1.5 px-2.5">
               <p class="text-menu-brown font-bold">Seleccionar página</p>
-              <svg class="text-menu-green" xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
+              <svg class="text-pink-300" xmlns="http://www.w3.org/2000/svg" width="2rem" height="2rem"
                    viewBox="0 0 24 24">
                 <path fill="currentColor" d="M3 18h18v-2H3zm0-5h18v-2H3zm0-7v2h18V6z"/>
               </svg>
             </button>
             <nz-dropdown-menu #dropdownMenu="nzDropdownMenu">
-              <ul class="uppercase p-3.5 border-t-4 border-menu-green rounded-none mt-5" nz-menu>
+              <ul class="uppercase p-3.5 border-t-4 border-pink-300 rounded-none mt-5" nz-menu>
                 <ng-container *ngFor="let button of buttons">
                   <ng-container *ngIf="button.subButtons; else listItem">
                     <ul class="shadow-none" nz-menu nzMode="inline">

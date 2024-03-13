@@ -1,11 +1,11 @@
 import {PreloadAllModules, RouterModule, Routes} from '@angular/router';
-import {MainPageComponent} from "./main-page/main-page.component";
-import {HeaderComponent} from "./header/header.component";
+import {MainPageComponent} from "./pages/main-page/main-page.component";
 import {NgModule} from "@angular/core";
+import {BoutiquePageComponent} from "./pages/boutique-page/boutique-page.component";
 
 export const routes: Routes = [
   {path: '', component: MainPageComponent},
-  {path: 'test', component: HeaderComponent}
+  {path: 'test/:title', component: BoutiquePageComponent}
 ];
 
 @NgModule({
